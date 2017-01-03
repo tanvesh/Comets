@@ -1,0 +1,80 @@
+body {background: linear-gradient(lightblue, white); }
+
+.container{
+    background-color: white;
+    padding: 0px;
+}
+.profile{
+    height:200px;
+    width:80%;
+    margin: auto auto;
+}
+
+p{
+    font-size: large;
+    font-style: italic;
+}
+
+.headPage{
+    background: linear-gradient(orangered, white);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.headPage h1{
+    font-style: italic;
+    
+    font-weight: bold;
+}
+
+ul{
+    /*background-color: darkgreen;*/
+    background: linear-gradient(white, darkgreen);
+}
+
+a{
+    color: white;
+}
+
+.headPage h1{
+    position: relative;
+    left: 10px;
+    top: 0px;
+    margin-top: 0px;
+}
+
+.headPage img{
+    float: left;
+    width: 200px;
+    height: 62px;
+    background: #555;
+}
+
+.top-buffer{
+    margin-top : 30px;
+}
+
+.viewProfile{
+    cursor: pointer;
+}
+
+#home{
+    width: 100%;
+    height: 100%;
+}
+
+img{
+    margin:auto;
+    width: 400px;
+}
+
+#slides_control {
+    position: absolute;
+    width: 77%;
+    height: 80%;
+}
+
+#slides_control img {
+    width: 64%;
+    height: 100%;
+}

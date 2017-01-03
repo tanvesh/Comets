@@ -1,0 +1,120 @@
+<html ng-app="quiz">
+<head>
+  <meta charset="utf-8">
+  <title>UTD Comets Cricket Club</title>
+
+<!--JS-->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/list.js"></script>
+  <script src="js/controllers/home.js"></script>
+  <script src="js/factory/data.js"></script>
+
+<!--CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="container">
+    <div class="page-header headPage">
+        <div class="row">
+            <div class="col-md-2">
+                <img class="img-responsive" ng-src="images/UTD_Comets_logo.png">
+            </div>
+            <div class="col-md-8">
+                <h1 class="text-center">UTD Comets Cricket Club</h1>
+            </div>
+            <div class="col-md-2">
+                <img class="img-responsive" ng-src="images/UTD.jpg">
+            </div>
+        </div>
+        </div>
+
+      <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+          <li><a data-toggle="tab" href="#players">Players</a></li>
+          <li><a data-toggle="tab" href="#achievements">Achievements</a></li>
+      </ul>
+
+      <div class="tab-content">
+          <div id="home" class="tab-pane fade in active" >
+              <div ng-controller="homeCtrl as home" id="slides_control">
+                  <div>
+                      <carousel interval="home.myInterval">
+                          <slide ng-repeat="slide in home.slides" active="slide.active">
+                              <img ng-src="{{slide.src}}">
+                          </slide>
+                      </carousel>
+                  </div>
+              </div>
+          </div>
+          <div id="players" class="tab-pane fade">
+              <div ng-controller="listCtrl as list">
+                  <form class="form-inline well well-sm clearfix">
+                      <input type="text" class="form-control pull-right" ng-model="list.search" placeholder="Search....">
+                  </form>
+                  <div class="row">
+                      <div class="col-sm-3" ng-repeat="player in list.data | filter: {name:list.search}">
+                          <div class="well well-sm">
+                              <div class="row viewProfile" data-toggle="modal"
+                                   data-target="#player-info"
+                                   ng-click="list.showInfo(player)">
+                                  <div>
+                                      <img class="img-rounded img-responsive profile" ng-src="{{player.image}}"/>
+                                  </div>
+                                  <div>
+                                      <p class="text-center"><strong>{{player.name}}</strong></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal" id="player-info">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <div class="row">
+                                      <div class="col-md-11">
+                                        <h2 class="text-center">{{list.currentPlayer.name}}</h2>
+                                      </div>
+                                      <div class="col-md-1">
+                                          <span class="glyphicon glyphicon-remove" data-dismiss="modal"></span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="modal-body">
+                                  <div class="row">
+                                      <div class="col-xs-8 col-xs-offset-2">
+                                          <img ng-src="{{list.currentPlayer.image}}" class="img-rounded img-responsive"/>
+                                      </div>
+                                  </div>
+                                  <div class="row top-buffer">
+                                      <div class="col-md-10 col-md-offset-1">
+                                          <p><strong>Name</strong> : {{list.currentPlayer.name}}</p>
+                                          <p><strong>Stance</strong> : {{list.currentPlayer.stance}}</p>
+                                          <p><strong>Age</strong> : {{list.currentPlayer.age}}</p>
+                                      </div>
+                                      <div class="col-md-10 col-md-offset-1 top-buffer">
+                                          <p>{{list.currentPlayer.description}}</p>
+                                          <button class="btn btn-danger pull-right" data-dismiss="modal">Close</button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div id="achievements" class="tab-pane fade">
+              <h3>Achievements</h3>
+                Coming Soon....
+          </div>
+      </div>
+  </div>
+
+</body>
+</html>
